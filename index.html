@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment</title>
+    <style>
+      table th,
+      table td {
+        border: 1px solid;
+      }
+      .box{
+        border: 1px solid;
+        padding: 0.5rem;
+        margin: 0.5rem;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <input type="text" placeholder="Enter name" id="name" />
+      <input type="text" placeholder="Enter age" id="age" />
+      <button id="add">Add</button>
+
+      <button id="printTable">Print in Table</button>
+      <p id="show"></p>
+    </div>
+
+    <script>
+      const name = document.querySelector("#name");
+      const age = document.querySelector("#age");
+      const add = document.querySelector("#add");
+      const show = document.querySelector("#show");
+      const printTable = document.querySelector("#printTable");
+      const arr = [];
+
+      add.addEventListener("click", ()=>{
+            let obj = {
+                name : name.value,
+                age : age.value,
+            }
+            show.innerHTML += `<div class="box-container">
+                                    <div class="box">${obj.name}</div>
+                                    <div class="box">${obj.age}</div>
+                                </div>`
+      })
+    
+    let newfunc = function newRow(){
+        let table = document.createElement("table")
+        let row = document.createElement("tr")
+        let td1 = document.createElement("td")
+        let td2 = document.createElement("td")
+        let td3 = document.createElement("td")
+        td1.innerText = "Sno"
+        td2.innerText = "Name"
+        td3.innerText = "Age"
+        row.appendChild(td1)
+        row.appendChild(td2)
+        row.appendChild(td3)
+        table.appendChild(row)
+        return table
+    }
+      printTable.addEventListener("click", ()=>{
+        const values = document.querySelectorAll(".box-container")
+        show.innerHTML = ""
+        const newTable = newfunc()
+        console.log(newTable)
+        show.innerHTML = newTable
+    })
+    </script>
+  </body>
+</html>
